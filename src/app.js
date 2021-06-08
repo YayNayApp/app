@@ -2,6 +2,7 @@ import { Router } from 'tiny-react-router'
 import Main from './screens/Main'
 import Add from './screens/Add'
 import Vote from './screens/Vote'
+import StatusMessage from './shared/components/statusmessage'
 import './shared/state'
 
 const routes = {
@@ -14,6 +15,7 @@ const routes = {
 export default function App() {
   return (
     <div id="App">
+      <StatusMessage />
       <Router routes={routes} />
     </div>
   )

@@ -32,6 +32,8 @@ export default function Vote(props) {
   const [state, setState] = useState({})
   const [wallet] = useStore('wallet')
   const [network] = useStore('network')
+  // eslint-disable-next-line
+  const [infoMessage, setInfoMessage] = useStore('infomessage')
   const [contracts, dispatchContracts] = useStore('contracts')
   // eslint-disable-next-line
   let contract = contracts.local.filter(c => c.address == props.contract)
@@ -65,7 +67,10 @@ export default function Vote(props) {
       if (proofIds.indexOf(requiredProofId) < 0) return false
       return res 
     }, true)
-    if (!hasAllProofs) return
+    if (!hasAllProofs) return setInfoMessage({
+      type: 'info',
+      message: (<div>You do not have the required <a href="https://tezid.net" target="_blank" rel="noreferrer">TezID</a> proofs to register for this YayNay.</div>)
+    })
     try {
       await callContract(contract.address, 'signup', { "prim": "Unit" })
       await handleFetchContractStorage(30)

@@ -9,6 +9,7 @@ import { getAccount } from './utils'
 export const walletStore = createStore('wallet', null)
 export const accountStore = createStore('account', null)
 export const networkStore = createStore('network', null)
+export const infoMessageStore = createStore('infomessage', null)
 export const contractStore = createStore('contracts', { remote: [], local: JSON.parse(localStorage.getItem('contracts') || '[]')}, (state, action) => {
   let _state
   switch(action.type) {

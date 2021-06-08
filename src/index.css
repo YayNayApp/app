@@ -1,6 +1,10 @@
 :root {
   --color-background: #E3DAD0;
+  --color-background-rgb: rgb(227, 218, 208);
+  --color-background-rgb-transparent: rgb(227, 218, 208, 0.6);
   --color-background-hover: #e3e3e3;
+  --color-background-hover-rgb: rgb(227, 227, 227);
+  --color-background-hover-rgb-transparent: rgb(227, 227, 227, 0.6);
   --color-border: #bbb;
   --color-text: #4d4d4d;
   --color-logo-0: #CC8561;

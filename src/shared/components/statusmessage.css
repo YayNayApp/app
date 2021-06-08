@@ -1,0 +1,61 @@
+.StatusMessage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-background-rgb-transparent);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+.StatusMessage .messageContainer {
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background-color: var(--color-background-hover);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.StatusMessage .messageHeader {
+  background-color: var(--color-logo-4);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.StatusMessage .messageHeader .close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.8em;
+  padding: 2px;
+  cursor: pointer;
+}
+
+.StatusMessage .messageBody {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.StatusMessage .messageBody .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 1.5em;
+}
+.StatusMessage .messageBody .icon.info {
+  color: var(--color-logo-1);
+}
+.StatusMessage .messageBody .icon.warning {
+  color: var(--color-logo-4);
+}
+.StatusMessage .messageBody .icon.error {
+  color: red;
+}
