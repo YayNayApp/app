@@ -10,7 +10,6 @@
 .ImportContract .container {
   display: flex;
   flex: auto;
-  overflow-y: scroll;
   flex-direction: column;
   max-width: 800px;
   min-width: 400px;

@@ -14,7 +14,6 @@ import './import.css'
 export default function ImportContract(props) {
   const [error, setError] = useState(null)
 
-  console.log(props)
   const importContract = async () => {
     let storage, code;
     try {

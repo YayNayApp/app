@@ -48,7 +48,6 @@ export default function AddForm(props) {
       if (['start', 'end'].indexOf(k) >= 0) {
         if (val.length === 16) val = `${val}:00Z`
         if (val.length === 19) val = `${val}Z`
-        console.log(val)
       }
       storage = storage.replace(`$YAYNAY_${k.toUpperCase()}`,val)
     })
