@@ -196,9 +196,9 @@ export default function Vote(props) {
             </div>
           </div>
           <div className="buttons">
-            <button className="neutral" onClick={handleRegister} disabled={!hasStarted || hasEnded || resolved || registered}>Register</button>
-            <button className="positive" onClick={handleVote} disabled={!hasStarted || hasEnded || resolved || !registered}>Vote</button>
-            <button className="neutral" onClick={handleResolve} disabled={resolved || !hasEnded}>Resolve</button>
+            <button className="neutral" onClick={handleRegister} disabled={!wallet || !hasStarted || hasEnded || resolved || registered}>Register</button>
+            <button className="positive" onClick={handleVote} disabled={!wallet || !hasStarted || hasEnded || resolved || !registered}>Vote</button>
+            <button className="neutral" onClick={handleResolve} disabled={!wallet || resolved || !hasEnded}>Resolve</button>
           </div>
         </div>
       </div>
