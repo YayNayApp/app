@@ -10,6 +10,9 @@ import { BiLinkExternal } from 'react-icons/bi'
 import { TezIDProof } from '@tezid/proofs-component'
 import Header from '../../shared/components/header'
 import Footer from '../../shared/components/footer'
+import {
+  getTezIDProofs
+} from '../../shared/api'
 import { 
   sleep,
   truncateAddress,
@@ -55,6 +58,14 @@ export default function Vote(props) {
   }
 
   const handleRegister = async () => {
+    const requiredProofs = contract.storage.requiredProofs
+    const proofs = await getTezIDProofs(network.type, wallet.address)
+    const proofIds = proofs.map(p => p.id)
+    const hasAllProofs = requiredProofs.reduce((res, requiredProofId) => {
+      if (proofIds.indexOf(requiredProofId) < 0) return false
+      return res 
+    }, true)
+    if (!hasAllProofs) return
     try {
       await callContract(contract.address, 'signup', { "prim": "Unit" })
       await handleFetchContractStorage(30)

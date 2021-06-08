@@ -49,9 +49,9 @@ export default function AddForm(props) {
     storage = storage.replace(`$YAYNAY_ID`, p.id)
     storage = storage.replace(`$YAYNAY_ADMIN`, wallet.address)
     storage = storage.replace(`$YAYNAY_TEZID_ADDRESS`, network.tezid)
-    // TODO: FIX TezID proof stuff
-    storage = storage.replace(`"$YAYNAY_TEZID_PROOFS"`, '{ "string": "email" }')
-    console.log(storage)
+    const tezidProofString = values.proofs.map(p => { return { "string": p } })
+    storage = storage.replace(`$YAYNAY_TEZID_PROOFS`, JSON.stringify(tezidProofString))
+    //console.log(storage)
     storage = JSON.parse(storage)
     const confirmed = window.confirm('Sure?')
     if (!confirmed) return
