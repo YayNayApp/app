@@ -45,6 +45,11 @@ export default function AddForm(props) {
     let storage = await fetch(p.storage).then(r => r.text())
     Object.keys(values).forEach(k => {
       let val = values[k]
+      if (['start', 'end'].indexOf(k) >= 0) {
+        if (val.length === 16) val = `${val}:00Z`
+        if (val.length === 19) val = `${val}Z`
+        console.log(val)
+      }
       storage = storage.replace(`$YAYNAY_${k.toUpperCase()}`,val)
     })
     storage = storage.replace(`$YAYNAY_ID`, p.id)
