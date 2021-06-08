@@ -1,0 +1,51 @@
+.Main {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  max-width: var(--max-width);
+  position: relative;
+}
+
+.Main .container {
+  display: flex;
+  flex: auto;
+  overflow-y: scroll;
+  flex-direction: column;
+}
+
+.Main .controlpanel {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+.Main .controlpanel input {
+  border: 1px solid var(--color-border);
+  width: 350px;
+  height: 30px;
+  font-size: 16px;
+  text-indent: 5px;
+}
+.Main .controlpanel input:focus {
+  outline: none;
+}
+.Main .controlpanel .addIcon {
+  width: 40px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.Main .controlpanel .addIcon svg path {
+  stroke: var(--color-logo-1);
+  stroke-width: 1; 
+}
+
+.Main .contracts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  margin-top: 15px;
+}

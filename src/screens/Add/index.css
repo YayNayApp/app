@@ -1,0 +1,21 @@
+.Add {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  max-width: var(--max-width);
+}
+
+.Add .container {
+  display: flex;
+  flex: auto;
+  overflow-y: scroll;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.Add h3 {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}

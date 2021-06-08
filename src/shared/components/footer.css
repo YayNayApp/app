@@ -1,0 +1,35 @@
+.Footer {
+  height: 40px;
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .Footer {
+    font-size: 0.9em;
+  }
+}
+
+.Footer a {
+  color: var(--color-text);
+  text-decoration: none;
+  padding: 3px;
+  font-size: 0.9em;
+  display: flex;
+}
+.Footer a.icon {
+  font-size: 2.1em;
+  padding: 1px;
+}
+.Footer a.firstIcon {
+  margin-left: 5px;
+}
+.Footer a.lastIcon {
+  margin-right: 5px;
+}
+
+.Footer a svg {
+  color: var(--color-logo-0);
+}

@@ -1,0 +1,105 @@
+{
+    "prim": "Pair",
+    "args": [
+        {
+            "prim": "Pair",
+            "args": [
+                {
+                    "prim": "Pair",
+                    "args": [
+                        {
+                            "string": "$YAYNAY_ADMIN"
+                        },
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "int": "$YAYNAY_COST"
+                                },
+                                {
+                                    "string": "$YAYNAY_END"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "prim": "Pair",
+                    "args": [
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "int": "$YAYNAY_PARTICIPATIONLIMIT"
+                                },
+                                {
+                                    "string": "$YAYNAY_NAME"
+                                }
+                            ]
+                        },
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                [],
+                                {
+                                    "string": "$YAYNAY_QUESTION"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "prim": "Pair",
+            "args": [
+                {
+                    "prim": "Pair",
+                    "args": [
+                        {
+                            "int": "$YAYNAY_MAJORITY"
+                        },
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                [
+                                    "$YAYNAY_TEZID_PROOFS"
+                                ],
+                                {
+                                    "string": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "prim": "Pair",
+                    "args": [
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "prim": "False"
+                                },
+                                {
+                                    "string": "$YAYNAY_START"
+                                }
+                            ]
+                        },
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "string": "$YAYNAY_TEZID_ADDRESS"
+                                },
+                                {
+                                    "int": "$YAYNAY_ID"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

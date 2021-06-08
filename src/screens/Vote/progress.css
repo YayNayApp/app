@@ -1,0 +1,37 @@
+.Progress {
+  display: flex;
+  flex-direction: column;
+}
+
+.Progress .labels {
+  flex: 1;
+  padding: 0px;
+  margin: 0px;
+}
+
+.Progress .label {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  margin: 0px;
+}
+.Progress .label > div{
+  display: flex;
+}
+.Progress .label.nay > div{
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.Progress .label .sub {
+  font-size: 0.5em;
+  color: var(--color-logo-6);
+}
+
+.Progress .bar {
+  height: 20px;
+  background-color: var(--color-logo-0);
+}
+.Progress .filler {
+  height: 100%;
+  background-color: var(--color-logo-1);
+}

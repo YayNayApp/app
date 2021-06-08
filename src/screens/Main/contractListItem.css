@@ -1,0 +1,64 @@
+.contractListItem {
+  border: 1px solid var(--color-logo-3);
+  display: flex;
+  width: 400px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.contractListItem .info {
+  display: flex;
+  flex-direction: column;
+  flex: auto;
+}
+.contractListItem .basic {
+  display: flex;
+  flex-direction: row;
+}
+.contractListItem .basic .nameWrapper {
+  display: flex;
+  flex: auto;
+  align-items: flex-start;
+}
+.contractListItem .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.contractListItem .icon img {
+  width: 30px;
+}
+.contractListItem .name {
+  padding-top: 10px;
+  overflow: hidden;
+  font-size: 1.2em;
+  word-wrap: break-word;
+  max-width: 245px;
+}
+.contractListItem .dates {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px;
+}
+.contractListItem .basic .dates .start,.basic .dates .end, .basic .dates .status {
+  font-size: 0.6em;
+  padding: 0;
+  margin: 1px;
+}
+.contractListItem .question {
+  padding: 10px;
+  background-color: var(--color-logo-3);
+  color: white; 
+  word-wrap: break-word;
+  max-width: 380px;
+}
+.contractListItem .question .long {
+  flex: auto;
+}
+.contractListItem .question .open {
+  font-size: 0.6em;
+  padding: 0;
+  margin: 2px;
+}

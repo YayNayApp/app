@@ -1,0 +1,51 @@
+.AddForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.AddForm form {
+  display: flex;
+  flex-direction: column;
+}
+
+.AddForm form .formField {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin-bottom: 5px;
+  max-width: 400px;
+}
+.AddForm form .formField label {
+  padding: 5px;
+}
+.AddForm form .formField p {
+  font-size: 0.8em;
+  padding: 0px;
+  margin: 0px;
+  padding-left: 5px;
+  margin-bottom: 10px;
+  color: var(--color-text);
+}
+.AddForm form .formField input {
+  max-width: 400px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  text-indent: 5px;
+  font-size: 1em;
+}
+
+.AddForm form .formField input:focus, textarea:focus {
+  outline: none;
+}
+.AddForm form .formField .error {
+  color: red;
+  font-size: 0.8em;
+  padding-left: 5px;
+}
+
+.AddForm button {
+  margin-top: 20px;
+  width: 150px;
+}

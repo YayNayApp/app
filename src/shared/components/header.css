@@ -1,0 +1,86 @@
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+.Header > div {
+  padding: 10px;
+}
+.Header .logo {
+  width: 200px;
+}
+.Header .logo img {
+  width: 60px;
+  cursor: pointer;
+}
+.Header .links {
+  flex: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Bellefair', serif;
+}
+.Header .links h1 {
+  color: var(--color-logo-1);
+  font-size: 3em;
+  font-weight: 400;
+  padding:0;
+  margin: 0;
+}
+.Header .links h2 {
+  color: var(--color-logo-3);
+  font-size: 0.8em;
+  font-weight: 200;
+  padding:0;
+  margin: 0;
+}
+.Header .links a {
+  border:none;
+  outline:none;
+  text-decoration:none;
+  color: var(--color-logo-1);
+  padding: 20px;
+  font-size: 1.2em;
+}
+.Header .wallet {
+  width: 200px;
+  display: flex;
+  justify-content: flex-end;
+}
+.Header .TezosWallet {
+  border: 1px solid var(--color-logo-0);
+  background-color: var(--color-background);
+}
+.Header .TezosWallet .TezosWalletMenu {
+  border: 1px solid var(--color-logo-0);
+  background-color: var(--color-background);
+}
+
+@media (max-width: 800px) {
+  .Header .logo {
+    width: 50px;
+  }
+  .Header .logo img {
+    width: 40px;
+  }
+  .Header .wallet {
+    width: 50px;
+  }
+  .Header .links h1 {
+    font-size: 2.3em;
+  }
+  .Header .links h2 {
+    font-size: 0.6em;
+  }
+  .Header .TezosWallet .TezosWalletMenu {
+    min-width: 150px;
+  }
+}
+@media (max-width: 500px) {
+  .Header .TezosWallet {
+    border: 0;
+  }
+}

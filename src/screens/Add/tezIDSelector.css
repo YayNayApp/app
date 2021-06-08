@@ -1,0 +1,18 @@
+.TezIDSelector {
+  display: flex;
+}
+.TezIDSelector .proofOptions {
+  display: flex;
+}
+.TezIDSelector .proofOption {
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  border: 1px solid #ff834f;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+.TezIDSelector .proofOption img {
+  width: 20px;
+  margin-right: 5px;
+}

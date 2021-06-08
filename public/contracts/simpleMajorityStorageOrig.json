@@ -1,0 +1,126 @@
+{
+    "prim": "Pair",
+    "args": [
+        {
+            "prim": "Pair",
+            "args": [
+                {
+                    "prim": "Pair",
+                    "args": [
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "string": "tz1UyQDepgtUBnWjyzzonqeDwaiWoQzRKSP5"
+                                },
+                                {
+                                    "int": "1000000"
+                                }
+                            ]
+                        },
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "string": "2022-01-01T00:00:00Z"
+                                },
+                                {
+                                    "int": "2"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "prim": "Pair",
+                    "args": [
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "string": "Off with their heads!?"
+                                },
+                                {
+                                    "int": "0"
+                                }
+                            ]
+                        },
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                [],
+                                {
+                                    "string": "Shall we execute the bankers?"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "prim": "Pair",
+            "args": [
+                {
+                    "prim": "Pair",
+                    "args": [
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "int": "50"
+                                },
+                                [
+                                    {
+                                        "string": "email"
+                                    },
+                                    {
+                                        "string": "phone"
+                                    }
+                                ]
+                            ]
+                        },
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "string": ""
+                                },
+                                {
+                                    "prim": "False"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "prim": "Pair",
+                    "args": [
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "string": "2021-01-01T00:00:00Z"
+                                },
+                                {
+                                    "string": "KT1TezoooozzSmartPyzzSTATiCzzzwwBFA1"
+                                }
+                            ]
+                        },
+                        {
+                            "prim": "Pair",
+                            "args": [
+                                {
+                                    "int": "0"
+                                },
+                                {
+                                    "int": "0"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
