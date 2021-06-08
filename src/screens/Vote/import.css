@@ -2,18 +2,16 @@
   display: flex;
   flex: auto;
   flex-direction: column;
-  align-items: center;
   max-width: var(--max-width);
-  position: relative;
 }
 
 .ImportContract .container {
   display: flex;
   flex: auto;
   flex-direction: column;
-  max-width: 800px;
-  min-width: 400px;
   align-items: center;
+  padding: 20px;
+  text-align: center;
 }
 
 .ImportContract .error h3 {
