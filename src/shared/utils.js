@@ -1,7 +1,7 @@
 import { isValidISODateString } from 'iso-datestring-validator'
 
 export function getStatusString(storage) {
-  const resolved = storage.resolved === "true"
+  const resolved = storage.resolved
   const start = new Date(storage.start)
   const end = new Date(storage.end)
   const hasStarted = new Date() > start
