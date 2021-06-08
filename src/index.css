@@ -33,6 +33,18 @@
   }
 }
 
+@keyframes roll {
+  0% {
+    transform: rotate(0deg); left: 10px;
+  }
+  50% {
+    transform: rotate(180deg); left: 100px;
+  }
+  100% {
+    transform: rotate(0deg); left: 10px;
+  }
+}
+
 html {
   height: 100%;
   width: 100%;

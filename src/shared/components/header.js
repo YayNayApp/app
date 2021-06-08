@@ -16,6 +16,7 @@ export default function Header(props) {
   const [wallet, setWallet] = useStore('wallet') 
   const [account, setAccount] = useStore('account') 
   const [showMenu, setShowMenu] = useState(false)
+  const [loading] = useStore('loading') 
 
   const handleConnectWallet = async (selectedNetwork) => {
     // TODO: Handle setNetwork -> selectedNetwork
@@ -41,7 +42,7 @@ export default function Header(props) {
   return (
     <div className="Header">
       <div className="logo" onClick={() => { nav('/') }}>
-        <img src="/logo-only.svg" alt="logo" />
+        <img className={`${loading ? 'roll' : ''}`} src="/logo-only.svg" alt="logo" />
       </div>
       <div className="links">
         <h1>YayNay</h1>

@@ -16,6 +16,7 @@
   border-radius: 5px;
   background-color: var(--color-background-hover);
   width: 80%;
+  max-width: 400px;
   display: flex;
   flex-direction: column;
   position: relative;

@@ -9,6 +9,8 @@ export default function AddForm(props) {
   const [network] = useStore('network')
   const [wallet] = useStore('wallet')
   // eslint-disable-next-line
+  const [loading, setLoading] = useStore('loading')
+  // eslint-disable-next-line
   const [contracts, dispatchContracts] = useStore('contracts')
   const [values, setValues] = useState({})
   const [errors, setErrors] = useState({})
@@ -38,7 +40,6 @@ export default function AddForm(props) {
   }
 
   const handleCreateVote = async () => {
-    // TODO: Validate
     if (!validate()) return
     const code = await fetch(p.code).then(r => r.json())
     let storage = await fetch(p.storage).then(r => r.text())
@@ -56,10 +57,13 @@ export default function AddForm(props) {
     const confirmed = window.confirm('Sure?')
     if (!confirmed) return
     try {
+      setLoading(true)
       const contract = await originateContract(network, code, storage)
+      setLoading(false)
       dispatchContracts({ type: 'addLocal', payload: contract }) 
       nav('/')
     } catch(e) {
+      setLoading(false)
       console.error(e.data)
     }
   }

@@ -10,10 +10,17 @@
 }
 .Header .logo {
   width: 200px;
+  height: 60px;
+  position: relative;
 }
 .Header .logo img {
   width: 60px;
   cursor: pointer;
+  position: absolute;
+  left: 10px;
+}
+.Header .logo img.roll {
+  animation: roll ease 2s infinite;
 }
 .Header .links {
   flex: auto;
@@ -62,6 +69,7 @@
 @media (max-width: 800px) {
   .Header .logo {
     width: 50px;
+    height: 40px;
   }
   .Header .logo img {
     width: 40px;

@@ -11,8 +11,10 @@
   border: 1px solid #ff834f;
   border-radius: 5px;
   margin-left: 5px;
+  align-items: center;
 }
 .TezIDSelector .proofOption img {
+  height: 20px;
   width: 20px;
   margin-right: 5px;
 }
