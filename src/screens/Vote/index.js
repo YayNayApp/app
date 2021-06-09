@@ -103,7 +103,7 @@ export default function Vote(props) {
   }
 
   const storage = contract.storage
-  const resolved = storage.resolved === "true"
+  const resolved = storage.resolved
   const start = new Date(storage.start)
   const end = new Date(storage.end)
   const hasStarted = new Date() > start
