@@ -68,7 +68,7 @@ export default function AddForm(props) {
       nav('/')
     } catch(e) {
       setLoading(false)
-      console.error(e.data)
+      console.error(e)
     }
   }
 
