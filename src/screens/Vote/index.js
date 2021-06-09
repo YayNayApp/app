@@ -13,6 +13,10 @@ import { TezIDProof } from '@tezid/proofs-component'
 import Header from '../../shared/components/header'
 import Footer from '../../shared/components/footer'
 import {
+  TEZOS_NETWORKS,
+  TEZOS_NETWORK_DEFAULT 
+} from '../../shared/config'
+import {
   getTezIDProofs
 } from '../../shared/api'
 import { 
@@ -42,7 +46,12 @@ export default function Vote(props) {
   if (contract.length === 0) return <ImportContract {...props} network={network} dispatchContracts={dispatchContracts} />
   contract = contract[0]
 
-  if (!network) return null
+  const getTzStatsUrl = () => {
+    // TODO: Instead of using default network, use network type from localStorage...
+    let _network = network
+    if (!network) _network = TEZOS_NETWORKS[TEZOS_NETWORK_DEFAULT]
+    return _network.tzstats
+  }
 
   const handleRemoveLocal = () => {
     const confirmed = window.confirm('Sure?')
@@ -157,7 +166,7 @@ export default function Vote(props) {
                 <AiOutlineReload />
               </div>
               <div>
-                <a target="_blank" rel="noreferrer" href={`${network.tzstats}/${contract.address}`}>
+                <a target="_blank" rel="noreferrer" href={`${getTzStatsUrl()}/${contract.address}`}>
                   <BiLinkExternal />
                 </a>
               </div>
@@ -189,7 +198,7 @@ export default function Vote(props) {
             <div className="admin">
                 <span className="label">Administrator:</span>
                 <span className="value">
-                  <a target="_blank" rel="noreferrer" href={`${network.tzstats}/${storage.admin}`}>{truncateAddress(storage.admin)}</a>
+                  <a target="_blank" rel="noreferrer" href={`${getTzStatsUrl()}/${storage.admin}`}>{truncateAddress(storage.admin)}</a>
                 </span>
             </div>
             <div className="cost">

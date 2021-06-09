@@ -1,7 +1,7 @@
 import { NetworkType } from '@airgap/beacon-sdk'
 import { validateDate } from './utils'
 
-export const TEZOS_NETWORK_DEFAULT = 'edonet'
+export const TEZOS_NETWORK_DEFAULT = 'mainnet'
 export const TEZOS_NETWORKS = {
   mainnet: {
     rpc: 'https://mainnet.smartpy.io',
