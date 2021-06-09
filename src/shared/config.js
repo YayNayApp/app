@@ -94,7 +94,7 @@ export const VOTING_PROCEDURES = [
       {
         name: 'start',
         label: 'Start date',
-        description: 'Set a time when voting starts. Particpants cannot vote before this time. This input uses the datetime-local type. If you do not see a datetime selector, input the following date format manually: yyyy-MM-ddThh:mm:ss',
+        description: 'Set a time when voting starts (UTC). Particpants cannot vote before this time. This input uses the datetime-local type. If you do not see a datetime selector, input the following date format manually: yyyy-MM-ddThh:mm:ss',
         type: 'timestamp',
         required: true,
         validate: validateDate
@@ -102,7 +102,7 @@ export const VOTING_PROCEDURES = [
       {
         name: 'end',
         label: 'End date',
-        description: 'Set a time when voting ends. Particpants cannot vote after this time. The vote can be resolved only after this time. This input uses the datetime-local type. If you do not see a datetime selector, input the following date format manually: yyyy-MM-ddThh:mm:ss',
+        description: 'Set a time when voting ends (UTC). Particpants cannot vote after this time. The vote can be resolved only after this time. This input uses the datetime-local type. If you do not see a datetime selector, input the following date format manually: yyyy-MM-ddThh:mm:ss',
         type: 'timestamp',
         required: true,
         validate: validateDate
