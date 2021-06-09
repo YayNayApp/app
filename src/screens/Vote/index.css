@@ -108,6 +108,21 @@
   align-items: space-between;
 }
 
+.Vote .buttons {
+  display: flex;
+}
+.Vote .buttons .separator {
+  flex: auto;
+}
+
+.Vote .buttons .shareButton {
+  font-size: 1.7em;
+  display: flex;
+  cursor: pointer;
+  margin-left: 5px;
+  color: var(--color-border);
+}
+
 .Vote .buttons button {
   margin-right: 5px;
 }

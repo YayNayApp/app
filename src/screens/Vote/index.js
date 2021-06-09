@@ -4,7 +4,9 @@ import { nav } from 'tiny-react-router'
 import { format } from 'date-fns'
 import { 
   AiOutlineReload,
-  AiOutlineDelete
+  AiOutlineDelete,
+  AiOutlineTwitter,
+  AiOutlineFacebook
 } from 'react-icons/ai'
 import { BiLinkExternal } from 'react-icons/bi'
 import { TezIDProof } from '@tezid/proofs-component'
@@ -99,6 +101,13 @@ export default function Vote(props) {
       await handleFetchContractStorage(30)
     } catch(e) {
       console.error(e)
+    }
+  }
+
+  const handleShare = (to) => {
+    if (to === 'twitter') {
+      const text = window.encodeURIComponent(`${storage.name} - ${storage.question}\n\n${window.location}\n\n#yaynay`)
+      window.open(`https://twitter.com/intent/tweet?text=${text}`, '_blank')
     }
   }
 
@@ -199,6 +208,15 @@ export default function Vote(props) {
             <button className="neutral" onClick={handleRegister} disabled={!wallet || !hasStarted || hasEnded || resolved || registered}>Register</button>
             <button className="positive" onClick={handleVote} disabled={!wallet || !hasStarted || hasEnded || resolved || !registered}>Vote</button>
             <button className="neutral" onClick={handleResolve} disabled={!wallet || resolved || !hasEnded}>Resolve</button>
+            <div className="separator" />
+            { false &&
+            <div className="shareButton facebook" onClick={() => handleShare('facebook')}>
+              <AiOutlineFacebook />
+            </div>
+            }
+            <div className="shareButton twitter" onClick={() => handleShare('twitter')}>
+              <AiOutlineTwitter />
+            </div>
           </div>
         </div>
       </div>
