@@ -31,7 +31,7 @@ import '@tezid/proofs-component/dist/index.css'
 import './index.css'
 
 export default function Vote(props) {
-  const [state, setState] = useState({})
+  const [loading, setLoading] = useState(false)
   const [wallet] = useStore('wallet')
   const [network] = useStore('network')
   // eslint-disable-next-line
@@ -53,12 +53,19 @@ export default function Vote(props) {
   }
 
   const handleFetchContractStorage = async (sleepTime=0) => {
-    setState({...state, ...{ reload: true }})
+    setLoading(true)
     await sleep(sleepTime*1000)
-    const storage = await fetchContractStorage(contract.address, network)
-    const updatedContract = {...contract, storage }
-    dispatchContracts({ type: 'updateLocal', payload: updatedContract }) 
-    setState({...state, ...{ reload: false }})
+    try {
+      const storage = await fetchContractStorage(contract.address, network)
+      const updatedContract = {...contract, storage }
+      dispatchContracts({ type: 'updateLocal', payload: updatedContract }) 
+    } catch(e) {
+      setInfoMessage({
+        type: 'error',
+        message: e.message
+      })
+    }
+    setLoading(false)
   }
 
   const handleRegister = async () => {
@@ -146,7 +153,7 @@ export default function Vote(props) {
               {storage.question}
             </div>
             <div className="actions">
-              <div className={state.reload ? 'spin' : ''} onClick={handleFetchContractStorage}>
+              <div className={loading ? 'spin' : ''} onClick={handleFetchContractStorage}>
                 <AiOutlineReload />
               </div>
               <div>
