@@ -32,7 +32,7 @@ export default function TezIDSelector(props) {
     <div className="TezIDSelector formField">
       <label>Who can vote?</label>
       <p>
-        YayNay is a platform for human beings to make collective decisions. We want to discourage bots and people voting with multiple addresses. 
+        YayNay is a platform for human beings to make collective decisions. We want to discourage bots and people voting multiple times. 
         The <a target="_blank" rel="noreferrer" href="https://tezid.net">TezID</a> oracle helps us achieve just this. 
         Select what TezID proofs are required in order to vote.
       </p>
