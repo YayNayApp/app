@@ -19,13 +19,20 @@ export default function Header(props) {
   const [showMenu, setShowMenu] = useState(false)
   const [loading] = useStore('loading') 
 
+  const availableNetworks = Object.values(TEZOS_NETWORKS)
+
   const handleConnectWallet = async (selectedNetwork) => {
-    setNetwork(selectedNetwork)
-    const _wallet = await connectWallet(selectedNetwork)
-    setWallet(_wallet)
-    const _account = await getAccount(selectedNetwork, _wallet.address)
-    setAccount(_account)
-    setShowMenu(false)
+    try {
+      selectedNetwork = selectedNetwork || availableNetworks[0]
+      setNetwork(selectedNetwork)
+      const _wallet = await connectWallet(selectedNetwork)
+      setWallet(_wallet)
+      const _account = await getAccount(selectedNetwork, _wallet.address)
+      setAccount(_account)
+      setShowMenu(false)
+    } catch(e) {
+      console.error(e)
+    }
   }
 
   const handleDisconnectWallet = async () => {
@@ -40,6 +47,7 @@ export default function Header(props) {
     window.open(`${network.tzstats}/${wallet ? wallet.address : ''}`, '_blank')
   }
 
+
   return (
     <div className="Header">
       <div className="logo" onClick={() => { nav('/') }}>
@@ -53,7 +61,7 @@ export default function Header(props) {
         <TezosWallet 
           address={wallet?.address} 
           balance={account?.total_balance}
-          networks={Object.values(TEZOS_NETWORKS)}
+          networks={availableNetworks.length > 1 ? availableNetworks : null}
           showMenu={showMenu}
           onToggleMenu={() => setShowMenu(!showMenu)}
           onConnectWallet={handleConnectWallet}
