@@ -20,6 +20,8 @@ export default function ImportContract(props) {
       storage = await fetchContractStorage(props.contract, props.network)
       code = await fetchContractCode(props.contract, props.network)
     } catch(e) {
+      if (e.message === 'network is null')
+        return setError(new Error(`Connect wallet to import!`))
       return setError(e)
     }
     if (!storage) return setError(new Error('Unable to fetch contract data'))
@@ -31,7 +33,8 @@ export default function ImportContract(props) {
     if (_diff) return setError(new Error('Unfamiliar contract. Unable to import'))
     props.dispatchContracts({ type: 'addLocal', payload: {
       address: props.contract,
-      storage: storage
+      storage: storage,
+      network: props.network.type
     }}) 
     nav('/')
   }

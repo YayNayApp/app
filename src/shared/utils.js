@@ -1,5 +1,41 @@
 import { isValidISODateString } from 'iso-datestring-validator'
 
+export function getDefaultTezosNetwork() {
+  switch(window.location.host) {
+    case 'yaynay.app':
+      return 'mainnet'
+    case 'florence.yaynay.app':
+      return 'florencenet'
+    case 'edo.yaynay.app':
+      return 'edonet'
+    default:
+      return 'edonet'
+  }
+}
+
+export function getAvailableTezosNetworks(networks) {
+  const network = getDefaultTezosNetwork()
+  if (window.location.host === 'localhost:3000') return networks
+  switch(network) {
+    case 'mainnet':
+      return {
+        mainnet: networks['mainnet']
+      }
+    case 'florencenet':
+      return {
+        florencenet: networks['florencenet']
+      }
+    case 'edonet':
+      return {
+        edonet: networks['edonet']
+      }
+    default:
+      return {
+        edonet: networks['edonet']
+      }
+  }
+}
+
 export function getStatusString(storage) {
   const resolved = storage.resolved
   const start = new Date(storage.start)

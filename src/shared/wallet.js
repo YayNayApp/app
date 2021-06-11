@@ -48,7 +48,8 @@ export async function originateContract(network, contract, storage) {
   return {
     transaction: origination_res.transactionHash,
     address: contractHash,
-    storage: contractStorage 
+    storage: contractStorage,
+    network: network.type 
   }
 }
 

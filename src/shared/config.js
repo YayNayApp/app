@@ -1,8 +1,12 @@
 import { NetworkType } from '@airgap/beacon-sdk'
-import { validateDate } from './utils'
+import { 
+  validateDate, 
+  getDefaultTezosNetwork,
+  getAvailableTezosNetworks
+} from './utils'
 
-export const TEZOS_NETWORK_DEFAULT = 'mainnet'
-export const TEZOS_NETWORKS = {
+export const TEZOS_NETWORK_DEFAULT = getDefaultTezosNetwork() 
+export const TEZOS_NETWORKS_ALL = {
   mainnet: {
     rpc: 'https://mainnet.smartpy.io',
     type: NetworkType.MAINNET,
@@ -31,6 +35,7 @@ export const TEZOS_NETWORKS = {
     tzstats_api: 'https://api.edo.tzstats.com',
   },
 }
+export const TEZOS_NETWORKS = getAvailableTezosNetworks(TEZOS_NETWORKS_ALL)
 
 export const VOTING_PROCEDURES = [
   {
