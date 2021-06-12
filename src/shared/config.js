@@ -14,7 +14,7 @@ export const TEZOS_NETWORKS_ALL = {
     testnet: false,
     tezid: 'KT19gfem4ukWAgj4dZuCyQyKQe1WnSbR8DRp',
     tzstats: 'https://tzstats.com',
-    tzstats_api: 'https://api.tzstats.com',
+    tzstats_api: 'https://tzstats.asbjornenge.com/mainnet',
   },
   florencenet: {
     rpc: 'https://florencenet.smartpy.io',
@@ -23,7 +23,7 @@ export const TEZOS_NETWORKS_ALL = {
     testnet: true,
     tezid: 'KT1BicmrsgvFhzXMYSqYuWZBA2qAub5mKcJk',
     tzstats: 'https://florence.tzstats.com',
-    tzstats_api: 'https://api.florence.tzstats.com',
+    tzstats_api: 'https://tzstats.asbjornenge.com/florence',
   },
   edonet: {
     rpc: 'https://edonet.smartpy.io',
@@ -32,7 +32,7 @@ export const TEZOS_NETWORKS_ALL = {
     testnet: true,
     tezid: 'KT1VxsgqQXwk3LfwspJXnj3m89UXCq6RFN6G',
     tzstats: 'https://edo.tzstats.com',
-    tzstats_api: 'https://api.edo.tzstats.com',
+    tzstats_api: 'https://tzstats.asbjornenge.com/edo',
   },
 }
 export const TEZOS_NETWORKS = getAvailableTezosNetworks(TEZOS_NETWORKS_ALL)
