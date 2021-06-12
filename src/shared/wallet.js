@@ -88,10 +88,10 @@ export async function callContract(contract, entryPoint, payload, amount=0) {
         destination: contract, 
         parameters: {
           entrypoint: entryPoint,
-          value: payload,
-        },
-      },
-    ],
+          value: payload
+        }
+      }
+    ]
   })
   console.log(result)
   return result
