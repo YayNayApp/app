@@ -79,7 +79,7 @@ export async function fetchContractCode(contract, network) {
   return script.script.code
 }
 
-export async function callContract(contract, entryPoint, payload, amount=0) {
+export async function callContract(contract, entryPoint, payload, amount="0") {
   const result = await dAppClient.requestOperation({
     operationDetails: [
       {
