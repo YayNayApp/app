@@ -205,10 +205,10 @@ export default function Vote(props) {
                 <span className="label">Cost:</span><span className="value">{storage.cost}</span>
             </div>
             <div className="start">
-                <span className="label">Start:</span><span className="value">{format(start, 'yyyy-MM-dd')}</span>
+                <span className="label">Start:</span><span className="value">{format(start, 'yyyy-MM-dd hh:mm:ss')}</span>
             </div>
             <div className="start">
-                <span className="label">End:</span><span className="value">{format(end, 'yyyy-MM-dd')}</span>
+                <span className="label">End:</span><span className="value">{format(end, 'yyyy-MM-dd hh:mm:ss')}</span>
             </div>
             <div className="majority">
                 <span className="label">Required majority:</span><span className="value">{`${storage.requiredMajority}%`}</span>
