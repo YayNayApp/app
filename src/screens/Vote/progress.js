@@ -1,3 +1,6 @@
+import {
+  isFloat
+} from '../../shared/utils'
 import './progress.css'
 
 export default function Progress(props) {
@@ -7,6 +10,8 @@ export default function Progress(props) {
   let naypercent = (nays / (yays + nays)) * 100
   if (isNaN(yaypercent)) yaypercent = 0
   if (isNaN(naypercent)) naypercent = 0
+  if (isFloat(yaypercent)) yaypercent = yaypercent.toFixed(2)
+  if (isFloat(naypercent)) naypercent = naypercent.toFixed(2)
 
   const fillerStyles = {
     width: `${yaypercent}%`,

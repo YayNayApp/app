@@ -92,4 +92,12 @@ export function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+export function isInt(n){
+    return Number(n) === n && n % 1 === 0;
+}
+
+export function isFloat(n){
+    return Number(n) === n && n % 1 !== 0;
+}
+
 export class TempleError extends Error {}
