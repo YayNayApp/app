@@ -24,7 +24,7 @@
     "react-tooltip": "^4.2.19",
     "sort-any": "^1.2.3",
     "sort-object": "^3.0.3",
-    "tezos-wallet-component": "^1.2.0",
+    "tezos-wallet-component": "^1.2.1",
     "tiny-react-router": "^2.0.0",
     "web-vitals": "^1.1.1"
   },
