@@ -20,9 +20,8 @@ export default function ImportContract(props) {
       storage = await fetchContractStorage(props.contract, props.network)
       code = await fetchContractCode(props.contract, props.network)
     } catch(e) {
-      if (e.message === 'network is null')
-        return setError(new Error(`Connect wallet to import!`))
-      return setError(e)
+      console.error(e)
+      return setError(new Error(`Unable to import contract!`))
     }
     if (!storage) return setError(new Error('Unable to fetch contract data'))
     if (!storage.ynid) return setError(new Error('Missing YayNay id, unable to import'))

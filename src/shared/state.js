@@ -50,12 +50,16 @@ export const contractStore = createStore('contracts', { remote: [], local: JSON.
 (async () => {
   const wallet = await getActiveAccount()
   walletStore.setState(wallet)
+  let network;
   if (wallet != null) {
-    let network = Object.values(TEZOS_NETWORKS).filter(n => n.type === wallet.network.type)[0]
+    network = Object.values(TEZOS_NETWORKS).filter(n => n.type === wallet.network.type)[0]
     if (!network) network = TEZOS_NETWORKS[TEZOS_NETWORK_DEFAULT]
     networkStore.setState(network)
     const account = await getAccount(network, wallet.address)
     accountStore.setState(account)
+  } else {
+    network = TEZOS_NETWORKS[TEZOS_NETWORK_DEFAULT]
+    networkStore.setState(network)
   }
 })()
 
