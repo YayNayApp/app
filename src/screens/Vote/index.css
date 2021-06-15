@@ -33,6 +33,7 @@
 .Vote .top .info {
   flex: auto;
   overflow-wrap: break-word;
+  max-width: 320px;
   padding: 10px;
   font-size: 1.2em;
 }
