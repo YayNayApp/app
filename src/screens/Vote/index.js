@@ -211,16 +211,17 @@ export default function Vote(props) {
               {storage.question}
             </div>
             <div className="actions">
-              <div className={loading ? 'spin' : ''} onClick={() => handleFetchContractStorage(1)}>
-                <AiOutlineReload />
+              <div onClick={handleRemoveLocal}>
+                <AiOutlineDelete />
               </div>
               <div>
                 <a target="_blank" rel="noreferrer" href={`${getTzStatsUrl()}/${contract.address}`}>
                   <BiLinkExternal />
                 </a>
               </div>
-              <div onClick={handleRemoveLocal}>
-                <AiOutlineDelete />
+              <div style={{ flex: 'auto' }} />
+              <div className={loading ? 'spin' : ''} onClick={() => handleFetchContractStorage(1)}>
+                <AiOutlineReload />
               </div>
             </div>
           </div>
