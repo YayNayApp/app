@@ -59,7 +59,7 @@ export default function ImportContract(props) {
         }
         { !error && validContractAddress &&
           <>
-          <h1>Vote not found</h1>
+          <h1>New YayNay!</h1>
           <p>It appears you are trying to view a Vote you have not seen before.</p> 
           <p>Would you like to import it?</p>
           <div className="buttons">

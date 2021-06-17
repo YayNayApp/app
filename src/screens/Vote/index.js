@@ -1,7 +1,10 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
 import { useStore } from 'react-hookstore'
 import { nav } from 'tiny-react-router'
 import { format } from 'date-fns'
+import { diff } from 'deep-diff'
+import sortObj from 'sort-any'
+import { validateContractAddress } from '@taquito/utils'
 import { 
   AiOutlineReload,
   AiOutlineDelete,
@@ -27,24 +30,59 @@ import {
 } from '../../shared/utils'
 import { 
   callContract,
+  fetchContractCode, 
   fetchContractStorage 
 } from '../../shared/wallet'
 import Progress from './progress'
-import ImportContract from './import'
 import '@tezid/proofs-component/dist/index.css'
 import './index.css'
 
 export default function Vote(props) {
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useStore('loading')
   const [wallet] = useStore('wallet')
   const [network] = useStore('network')
   // eslint-disable-next-line
   const [infoMessage, setInfoMessage] = useStore('infomessage')
   const [contracts, dispatchContracts] = useStore('contracts')
   // eslint-disable-next-line
-  let contract = contracts.local.filter(c => c.address == props.contract)
-  if (contract.length === 0) return <ImportContract {...props} network={network} dispatchContracts={dispatchContracts} />
-  contract = contract[0]
+  let contract = contracts.local.filter(c => c.address == props.contract)[0]
+
+  useEffect(() => {
+    const importContract = async () => {
+      const validContractAddress = validateContractAddress(props.contract) === 3
+      // 0 (NO_PREFIX_MATCHED), 1 (INVALID_CHECKSUM), 2 (INVALID_LENGTH) or 3 (VALID).
+
+      if (!validContractAddress) return setInfoMessage({ message: 'Invalid contract address', type: 'error' })
+
+      let storage, code;
+      try {
+        setLoading(true)
+        await sleep(500)
+        storage = await fetchContractStorage(props.contract, network)
+        code = await fetchContractCode(props.contract, network)
+        await sleep(500)
+        setLoading(false)
+      } catch(e) {
+        console.error(e)
+        setLoading(false)
+        return setInfoMessage({ message: `Unable to import contract!`, type: 'error' })
+      }
+      if (!storage) return setInfoMessage({ message: 'Unable to fetch contract data', type: 'error' })
+      if (!storage.ynid) return setInfoMessage({ message: 'Missing YayNay id, unable to import', type: 'error' })
+      const localContract = await fetch(`/contracts/${storage.ynid}_code.json`).then(res => res.json())
+      const a = sortObj(code)
+      const b = sortObj(localContract.code)
+      const _diff = diff(a, b)
+      if (_diff) return setInfoMessage({ message: 'Unfamiliar contract. Unable to import', type: 'error' })
+      dispatchContracts({ type: 'addLocal', payload: {
+        address: props.contract,
+        storage: storage,
+        network: network.type
+      }}) 
+    }
+
+    if (network && !contract) importContract()
+  }, [network, contract, props.contract, contracts, dispatchContracts, setInfoMessage, setLoading])
 
   const getTzStatsUrl = () => {
     // TODO: Instead of using default network, use network type from localStorage...
@@ -57,8 +95,9 @@ export default function Vote(props) {
     const confirmed = window.confirm('Sure?')
     if (!confirmed) return
     nav('/')
-    dispatchContracts({ type: 'removeLocal', payload: contract }) 
-    
+    setTimeout(() => {
+      dispatchContracts({ type: 'removeLocal', payload: contract }) 
+    },100)
   }
 
   const handleFetchContractStorage = async (sleepTime=0) => {
@@ -127,33 +166,43 @@ export default function Vote(props) {
     }
   }
 
-  const storage = contract.storage
-  const resolved = storage.resolved
-  const start = new Date(storage.start)
-  const end = new Date(storage.end)
-  const hasStarted = new Date() > start
-  const hasEnded = new Date() > end
-  const participants = storage.participants
-  const registered = wallet ? Object.keys(participants).indexOf(wallet.address) >= 0 : false
-  const yays = Object.values(participants).reduce((sum,i) => {
-    if (i === '1') return sum+1
-    return sum
-  },0)
-  const nays = Object.values(participants).reduce((sum,i) => {
-    if (i === '0') return sum+1
-    return sum
-  },0)
-  const status = getStatusString(storage) 
-  const requiredProofs = storage.requiredProofs.map(p => {
-    let _p = {}
-    _p.id = p
-    _p.label = p[0].toUpperCase() + p.slice(1)
-    return <TezIDProof key={_p.id} proof={_p} />
-  })
+  let storage, resolved, start, end, hasStarted, hasEnded, participants, registered, yays, nays, status, requiredProofs
+  if (contract) {
+    storage = contract.storage
+    resolved = storage.resolved
+    start = new Date(storage.start)
+    end = new Date(storage.end)
+    hasStarted = new Date() > start
+    hasEnded = new Date() > end
+    participants = storage.participants
+    registered = wallet ? Object.keys(participants).indexOf(wallet.address) >= 0 : false
+    yays = Object.values(participants).reduce((sum,i) => {
+      if (i === '1') return sum+1
+      return sum
+    },0)
+    nays = Object.values(participants).reduce((sum,i) => {
+      if (i === '0') return sum+1
+      return sum
+    },0)
+    status = getStatusString(storage) 
+    requiredProofs = storage.requiredProofs.map(p => {
+      let _p = {}
+      _p.id = p
+      _p.label = p[0].toUpperCase() + p.slice(1)
+      return <TezIDProof key={_p.id} proof={_p} />
+    })
+  }
 
   return (
     <div className="Vote">
       <Header />
+      { !contract &&
+      <div className="container">
+        <h3>New YayNay!</h3>
+        <div>Importing...</div>
+      </div>
+      }
+      { contract &&
       <div className="container">
         <h3>{storage.name}</h3>
         <div className="wrapper">
@@ -162,7 +211,7 @@ export default function Vote(props) {
               {storage.question}
             </div>
             <div className="actions">
-              <div className={loading ? 'spin' : ''} onClick={handleFetchContractStorage}>
+              <div className={loading ? 'spin' : ''} onClick={() => handleFetchContractStorage(1)}>
                 <AiOutlineReload />
               </div>
               <div>
@@ -236,6 +285,7 @@ export default function Vote(props) {
           </div>
         </div>
       </div>
+      }
       <Footer />
     </div>
   )
